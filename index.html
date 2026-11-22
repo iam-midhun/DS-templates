@@ -360,8 +360,8 @@ const BRANDS = {
   vodien: {
     label: 'Vodien',
     titanWebmail: 'https://vodien.titan.email/login/',
-    titanFullArticles: [ 
-      'https://www.vodien.com/help/article/the-titan-email-account' 
+    titanFullArticles: [
+      'https://www.vodien.com/help/article/the-titan-email-account',
       'https://support.titan.email/hc/en-us/articles/25005307786905-Enable-Titan-on-other-apps',
       'https://support.titan.email/hc/en-us/articles/900001311526-Configure-Titan-Mail-on-Outlook',
       'https://support.titan.email/hc/en-us/articles/900000215446-Configure-Titan-on-other-apps-using-IMAP-POP'
@@ -438,8 +438,8 @@ const plural = (n, one, many) => (Number(n) === 1 ? one : many);
    One shared generator + one entry per email type. "DNS management" (managed by us /
    not managed by us) is a dropdown inside each page, so there are only 5 pages.
    To change wording:
-     • wording that appears in ALL pre-migration replies  → PRE_COMMON
-     • wording that is specific to one type               → PRE_TYPES (that type's entry)
+- wording that appears in ALL pre-migration replies  → PRE_COMMON
+- wording that is specific to one type               → PRE_TYPES (that type's entry)
    ------------------------------------------------------------------------ */
  
 const PRE_COMMON = {
@@ -855,9 +855,10 @@ register({
       credentials,
       `You can reset the TITAN password using the article below:\n${B.titanPasswordResetArticle}`,
       'Please note that if you are using an email client such as Outlook, Thunderbird, Apple Mail, or a mobile mail application, you will need to reconfigure it using the TITAN mail settings from the articles below.',
+      'Before proceeding with configuring any third-party mail clients, please make sure to enable third-party access in your TITAN webmail settings.',
       `Please refer to the articles below to configure your TITAN email accounts:\n${B.titanFullArticles.join('\n')}`,
       `To add email forwarders, you can use this article:\n${TITAN_FORWARDER_ARTICLE}`,
-      `Should you encounter any issues during setup or notice any discrepancies in your email functionality, please feel free to contact us. We will be happy to assist you.\n${B.titanQuickArticles.join('\n')}\n${B.titanWebmail}`,
+      'Should you encounter any issues during setup or notice any discrepancies in your email functionality, please feel free to contact us. We will be happy to assist you.',
       s.notes.trim()
     ]);
   }
@@ -1442,4 +1443,3 @@ go(location.hash.slice(1) && findNavItem(location.hash.slice(1)) ? location.hash
 </script>
 </body>
 </html>
- 
