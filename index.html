@@ -1197,9 +1197,10 @@ const NAV = [
   ] },
   { group: 'Internal & Tools', color: 'var(--teal)', sections: [
       { items: [
-          { id: 'internal-notes',  label: 'Migration Case Notes' },
-          { id: 'tool-trustpilot', label: 'Trustpilot Request' },
-          { id: 'tool-dns',        label: 'DNS Record Checker' } ] }
+          { id: 'internal-notes',   label: 'Migration Case Notes' },
+          { id: 'tool-trustpilot',  label: 'Trustpilot Request' },
+          { id: 'tool-dns',         label: 'DNS Record Checker' },
+          { id: 'tool-sitepreview', label: 'Site Preview', url: 'https://sitepreview.org/' } ] }
   ] }
 ];
  
@@ -1401,8 +1402,11 @@ function buildNav() {
       <div class="nav-group-label"><i></i>${g.group}</div>
       ${g.sections.map(sec => `
         ${sec.sub ? `<div class="nav-sub" style="--c:${sec.color}">${sec.sub}</div>` : ''}
-        ${sec.items.map(it => `<button type="button" class="nav-item" data-id="${it.id}" data-group="${esc(g.group)}">
-            <span>${it.label}</span>${it.soon ? '<span class="soon">Soon</span>' : ''}</button>`).join('')}
+        ${sec.items.map(it => it.url
+          ? `<a class="nav-item" href="${esc(it.url)}" target="_blank" rel="noopener noreferrer" style="text-decoration:none">
+              <span>${it.label}</span><span style="font-size:12px;opacity:.7">↗</span></a>`
+          : `<button type="button" class="nav-item" data-id="${it.id}" data-group="${esc(g.group)}">
+              <span>${it.label}</span>${it.soon ? '<span class="soon">Soon</span>' : ''}</button>`).join('')}
       `).join('')}
     </div>`).join('');
 }
